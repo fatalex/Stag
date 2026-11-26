@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B1120"
+    android:padding="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="STAG-200 GoFast"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Отключено"
+                    android:textColor="#94A3B8"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvFuelBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#1E293B"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="ОЖИДАНИЕ"
+                android:textColor="#CBD5E1"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnConnect"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#38BDF8"
+                android:text="Подключить BT"
+                android:textColor="#0F172A" />
+
+            <Button
+                android:id="@+id/btnPoll"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#1E293B"
+                android:enabled="false"
+                android:text="Автоопрос"
+                android:textColor="#E2E8F0" />
+        </LinearLayout>
+
+        <!-- KPI Row 1: RPM & Pressures -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#1E293B"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ОБОРОТЫ"
+                    android:textColor="#94A3B8"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tvRpm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="0"
+                    android:textColor="#FFFFFF"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvVolt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="АКБ: 0.0 В"
+                    android:textColor="#94A3B8"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="#1E293B"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ДАВЛЕНИЕ ГАЗА"
+                    android:textColor="#94A3B8"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tvGasPress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="0.00 бар"
+                    android:textColor="#34D399"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvMapPress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="MAP: 0.00 бар"
+                    android:textColor="#CBD5E1"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- KPI Row 2: Temps & Injection -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#1E293B"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ТЕМПЕРАТУРЫ"
+                    android:textColor="#94A3B8"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tvTemps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="Ред: 0°C\nГаз: 0°C"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="#1E293B"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ВПРЫСК (СРЕД.)"
+                    android:textColor="#94A3B8"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tvInjAvg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text="Бенз: 0.00 мс\nГаз:  0.00 мс"
+                    android:textColor="#FBBF24"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Injectors 4-cylinder detail & ECU Info -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#1E293B"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tvCylinders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:lineSpacingExtra="3dp"
+                android:text="Ц1-4 Бенз: 0.00 / 0.00 / 0.00 / 0.00 мс\nЦ1-4 Газ:  0.00 / 0.00 / 0.00 / 0.00 мс\nКлапан: —  |  Коэфф: —"
+                android:textColor="#E2E8F0"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvEcuMeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="monospace"
+                android:text="Прошивка: —  |  Ошибки: —  |  Часы: —"
+                android:textColor="#94A3B8"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Oscilloscope -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#0F172A"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ОСЦИЛЛОГРАФ (LIVE)"
+                android:textColor="#38BDF8"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <com.stag200.gofast.OscilloscopeView
+                android:id="@+id/oscView"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginTop="6dp" />
+        </LinearLayout>
+
+        <!-- Diagnostic Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnReadErrors"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#1E293B"
+                android:text="Ошибки (0x40)"
+                android:textColor="#E2E8F0"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/btnReadClock"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:backgroundTint="#1E293B"
+                android:text="Часы (0x49)"
+                android:textColor="#E2E8F0"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/btnReadFw"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:backgroundTint="#1E293B"
+                android:text="Паспорт (0x00)"
+                android:textColor="#E2E8F0"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- HEX Log Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="HEX-ЛОГ ОБМЕНА"
+                android:textColor="#94A3B8"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnCopyLog"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:backgroundTint="#334155"
+                android:text="Копировать"
+                android:textColor="#E2E8F0"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/btnClearLog"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_marginStart="6dp"
+                android:backgroundTint="#334155"
+                android:text="Очистить"
+                android:textColor="#FDA4AF"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvHexLog"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="6dp"
+            android:background="#020617"
+            android:fontFamily="monospace"
+            android:padding="8dp"
+            android:scrollbars="vertical"
+            android:text="Лог пуст. Нажмите «Подключить BT»."
+            android:textColor="#34D399"
+            android:textSize="10sp" />
+    </LinearLayout>
+</ScrollView>
